@@ -9,3 +9,34 @@ except Exception as e:
     print(f"Ocorreu um erro ao ler o arquivo: {e}")
 
 
+
+
+
+treinos = {
+    "1": "40 minutos de corrida, 10 minutos de aquecimento, 20 minutos no pace da prova e 10 minutos de recuperação.",
+    "2": "Corrida contínua de 10 km.",
+    "3": "Corrida intensa por um período de tempo e depois caminhar.",
+    "4": "Corrida de 15 km em um ritmo moderado."
+}
+
+def escolher(treinos):
+    while True:
+        print('''Escolha o tipo de treino:
+1.⁠ ⁠Intervalado
+2.⁠ ⁠Resistência
+3.⁠ ⁠Velocidade
+4.⁠ ⁠Longa Distância
+0.⁠ ⁠Sair''')
+        
+        opcao = input("Digite o número do treino desejado: ")
+        
+        if opcao in treinos:
+            print(treinos[opcao])
+        elif opcao == "0":
+            print("Saindo do programa.")
+            break
+        else:
+            print("Opção inválida. Tente novamente.")
+
+
+escolher(treinos)
