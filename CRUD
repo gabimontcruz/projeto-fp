@@ -290,4 +290,6 @@ treinos = {
             print("Opção inválida. Tente novamente.")
 
 
-escolher(treinos)
+    escolher(treinos)
+
+#teste.
