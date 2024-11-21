@@ -23,6 +23,6 @@
 ### Menu de Gerenciamento de Treinos:
 
 - Adicionar, visualizar, atualizar ou excluir treinos.
-- Menu de Metas:
+- Menu de Metas: adiciona determinados tipos de metas
 
 - Definir metas de corrida para distância, tempo e frequência.
