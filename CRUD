@@ -147,11 +147,12 @@ def metas():
     return metas_usuario
 
 while True: 
-    print("---menu principal---")
-    print("1- gerenciamento de treinos")
-    print("2- gerenciar tempo de treinos")
-    print("3- metas, desafios e sugestões de treinos aleatórios")
-    print("4- sair")
+    print("""
+    ---menu principal---
+     1- gerenciamento de treinos
+     2- gerenciar tempo de treinos
+     3- metas, desafios e sugestões de treinos aleatórios
+     4- sair""")
     escolha = int(input("Bem vindo ao RunTrack, escolha de acordo com o menu o que você deseja fazer: "))
     if escolha == 4:
         break
