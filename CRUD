@@ -1,48 +1,209 @@
-try:
-    with open('arquivo_treinos.txt', 'r', encoding='utf8') as file:
-        treinos = file.readlines()
-except FileNotFoundError:
+
+
     
-    with open('arquivo_treinos.txt', 'w', encoding='utf8') as file:
-        pass  
-except Exception as e:
-    print(f"Ocorreu um erro ao ler o arquivo: {e}")
 
-def adicionar_treino(nome, loc, data, distancia, clima):
-    try:
-        nome = str(input('Informe o nome do arquivo sem .txt: '))
-        with open(f'{nome}.txt', 'w', encoding='utf8') as file:
-            treino = f"Nome: {nome} \nLocalizacão: {loc} \nData: {data} \nDistância: {distancia} \nClima: {clima}\n"
-            file.write(treino) 
-        print("Treino adicionado com sucesso!")
-    except Exception as e:
-        print(f"Ocorreu um erro ao adicionar o treino: {e}")
 
-    def vizualizar():
+
+
+
+def update():
+    arquivo = str(input("Digite o nome do arquivo: "))
     try:
-        
-        treino=input("Digite o nome do treino que você deseja vizualizar: ")
-        arquivo_treinos = treino + ".txt"
-        with open(arquivo_treinos, 'r', encoding='utf8', errors='ignore') as file:
-            treinos = file.readlines()
-            if treinos:  
-                print("--- Treinos Registrados ---")
-                for treino in treinos:
-                    print(treino.strip())  
-            else:
-                print("Nenhum treino registrado no arquivo.")
+        with open(f"{arquivo}.txt", "r", encoding="utf8") as file:
+            conteudo = file.readlines()
+
+        with open(f"{arquivo}.txt", "w", encoding="utf8") as file:
+            file.close()
+            edit = str(input("Digite o nome do treino que deseja editar: "))
+            print("---menu de atualização---")
+            print("1-nome")
+            print("2-datas")
+            print("3-localização")
+            print("4-distância")
+            print("5-clima")
+            print("6-tempo")
+            atualizacao=int(input("Digite de acordo com o menu o que você deseja atualizar: "))
+            if atualizacao==1:
+                novonome = str(input("Digite o nome: "))
+            
+                for i in range(len(conteudo)):
+                    if "Nome: " in conteudo[i]:
+                        conteudo[i] = f"Nome: {novonome}\n"
+
+            elif atualizacao==2:
+                novodata = str(input("Digite a data: "))
+
+                for i in range(len(conteudo)):
+                    if "Data: " in conteudo[i]:
+                        conteudo[i] = f"Data: {novodata}\n"
+
+            elif atualizacao==3:
+                novoloc = str(input("Digite a localização: "))
+
+                for i in range(len(conteudo)):
+                    if "Localizacão: " in conteudo[i]:
+                        conteudo[i] = f"Localizacão: {novoloc}\n"
+
+            elif atualizacao==4:
+                novodistc = str(input("Digite a distância: "))
+
+                for i in range(len(conteudo)):
+                    if "Distância: " in conteudo[i]:
+                        conteudo[i] = f"Distância: {novoloc}\n"
+            elif atualizacao==5:
+                novoclima = str(input("Digite o clima: "))
+
+                for i in range(len(conteudo)):
+                    if "Clima: " in conteudo[i]:
+                        conteudo[i] = f"Clima: {novoloc}\n"
+            elif atualizacao==6:
+                novotempo = str(input("Digite o tempo: "))
+
+                for i in range(len(conteudo)):
+                    if "Tempo: " in conteudo[i]:
+                        conteudo[i] = f"Tempo: {novotempo}\n"
+            
+            file.close()
+
+        with open(f"{arquivo}.txt", "w", encoding="utf-8") as file:
+            file.writelines(conteudo)
+
     except FileNotFoundError:
-        print("Erro: O arquivo 'arquivo_treinos.txt' não foi encontrado.")
+        print("Erro: O arquivo não foi encontrado.")
+        return
     except Exception as e:
-        print(f"Ocorreu um erro: {e}")
+        print(f"Ocorreu um erro ao ler o arquivo: {e}")
+        return
 
-    
+def deletar():
+    arquivo = str(input("Digite o nome do arquivo (sem .txt) que você deseja excluir: "))
+    try:
+        if os.path.exists(f"{arquivo}.txt"):
+            os.remove(f"{arquivo}.txt")  
+            print(f"Arquivo '{arquivo}.txt' excluído com sucesso!")
+        else:
+            print(f"Erro: O arquivo '{arquivo}.txt' não foi encontrado.")
+    except Exception as e:
+        print(f"Ocorreu um erro ao tentar excluir o arquivo: {e}")
 
+def filtrar_treinos(tempo_min=None, tempo_max=None, distancia_min=None, distancia_max=None):
+    try:
+        arquivos = [f for f in os.listdir() if f.endswith('.txt')]
+        treinos_filtrados = []
+        
+        for arquivo in arquivos:
+            with open(arquivo, 'r', encoding='utf8') as file:
+                treino = file.readlines()
+                tempo = None
+                distancia = None
+                
+                for linha in treino:
+                    if 'Tempo: ' in linha:
+                        tempo = float(linha.split(":")[1].strip())  
+                    if 'Distância: ' in linha:
+                        distancia = float(linha.split(":")[1].strip()) 
 
+                if tempo and distancia:
+                    if (tempo_min is None or tempo >= tempo_min) and (tempo_max is None or tempo <= tempo_max) and \
+                        (distancia_min is None or distancia >= distancia_min) and (distancia_max is None or distancia <= distancia_max):
+                        treinos_filtrados.append(arquivo)
 
+        if treinos_filtrados:
+            print("\nTreinos filtrados encontrados:")
+            for treino in treinos_filtrados:
+                print(treino)
+        else:
+            print("Nenhum treino corresponde aos filtros aplicados.")
 
+    except Exception as e:
+        print(f"Ocorreu um erro ao filtrar os treinos: {e}")
 
+def metas():
+    print("Defina suas metas de treino:")
 
+    distancia_meta = float(input("Qual a distância (em km) que você deseja correr por mês? "))
+
+    tempo_meta = float(input("Qual o tempo (em horas) que você deseja correr por semana? "))
+
+    frequencia_meta = int(input("Quantos treinos por semana você quer realizar? "))
+
+    metas_usuario = {
+        'distancia': distancia_meta,
+        'tempo': tempo_meta,
+        'frequencia': frequencia_meta
+    }
+
+    print("\nSuas metas foram definidas da seguinte forma:")
+    print(f"Distância mensal: {metas_usuario['distancia']} km")
+    print(f"Tempo semanal: {metas_usuario['tempo']} horas")
+    print(f"Frequência semanal de treinos: {metas_usuario['frequencia']} treinos")
+
+    try:
+        with open('metas.txt', 'a', encoding='utf8') as file:
+            file.write("\n--- NOVAS METAS ---\n")
+            file.write(f"Distância mensal: {metas_usuario['distancia']} km\n")
+            file.write(f"Tempo semanal: {metas_usuario['tempo']} horas\n")
+            file.write(f"Frequência semanal de treinos: {metas_usuario['frequencia']} treinos\n")
+            file.write("----------------------\n")
+        print("Metas salvas com sucesso no arquivo 'metas.txt'!")
+    except Exception as e:
+        print(f"Ocorreu um erro ao salvar as metas: {e}")
+
+    return metas_usuario
+
+while True: 
+    print("---menu principal---")
+    print("1- gerenciamento de treinos")
+    print("2- gerenciar tempo de treinos")
+    print("3- metas, desafios e sugestões de treinos aleatórios")
+    print("4- sair")
+    escolha = int(input("Bem vindo ao RunTrack, escolha de acordo com o menu o que você deseja fazer: "))
+    if escolha == 4:
+        break
+    elif escolha == 1:
+        print("---menu de gerenciamento---")
+        print("1- adicionar treino")
+        print("2- visualizar treino")
+        print("3- atualizar treino")
+        print("4- excluir treino")
+        opcao = int(input("Escolha de acordo com o menu o que você deseja fazer: "))
+        if opcao == 1:
+            nome = input("Digite o nome do treino que você deseja adicionar: ")
+            loc = input('Digite a localização do treino: ')
+            data = input('Digite a data do treino: ')
+            distancia = input("Digite a distância percorrida no treino: ")
+            clima = input("Digite o clima do treino: ")
+            tempo = input("Digite o tempo do treino (em minutos): ")
+            adicionar_treino(nome, loc, data, distancia, clima, tempo)
+        elif opcao == 2:
+            vizualizar()
+        elif opcao == 3:
+            update()
+        elif opcao == 4:
+            deletar()
+    elif escolha == 2:
+        print("---menu de tempo de treinos---")
+        print("1- filtrar treinos")
+        filtrar_opcao = int(input("Escolha de acordo com o menu o que você deseja fazer: "))
+        if filtrar_opcao == 1:
+            tempo_min = float(input("Tempo mínimo (em horas) para o treino: "))
+            tempo_max = float(input("Tempo máximo (em horas) para o treino: "))
+            distancia_min = float(input("Distância mínima (em km): "))
+            distancia_max = float(input("Distância máxima (em km): "))
+            filtrar_treinos(tempo_min, tempo_max, distancia_min, distancia_max)
+    elif escolha == 3:
+        print("---menu de metas/desafios/sugestão de treinos aleatórios---")
+        print("1- adicionar metas")
+        print("2- registrar desafios")
+        print("3- sugestões de treino aleatório")
+        decisao = int(input("De acordo com o menu o que você deseja fazer: "))
+        if decisao == 1:
+            metas_usuario = metas()
+            print("\nMetas definidas com sucesso!")
+        elif decisao == 2:
+            pass
+        elif decisao == 3:
+            pass
 
 treinos = {
     "1": "40 minutos de corrida, 10 minutos de aquecimento, 20 minutos no pace da prova e 10 minutos de recuperação.",
