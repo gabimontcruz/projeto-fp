@@ -31,6 +31,11 @@ def adicionar_treino(nome, loc, data, distancia, clima):
                     print(treino.strip())  
             else:
                 print("Nenhum treino registrado no arquivo.")
+    except FileNotFoundError:
+        print("Erro: O arquivo 'arquivo_treinos.txt' não foi encontrado.")
+    except Exception as e:
+        print(f"Ocorreu um erro: {e}")
+
     
 
 
