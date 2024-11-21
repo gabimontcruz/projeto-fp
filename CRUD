@@ -147,61 +147,6 @@ def metas():
 
     return metas_usuario
 
-while True: 
-    print("""
-    ---menu principal---
-     1- gerenciamento de treinos
-     2- gerenciar tempo de treinos
-     3- metas, desafios e sugestões de treinos aleatórios
-     4- sair""")
-    escolha = int(input("Bem vindo ao RunTrack, escolha de acordo com o menu o que você deseja fazer: "))
-    if escolha == 4:
-        break
-    elif escolha == 1:
-        print("""
-        ---menu de gerenciamento---
-            1- adicionar treino
-            2- visualizar treino
-            3- atualizar treino
-            4- excluir treino""")
-        opcao = int(input("Escolha de acordo com o menu o que você deseja fazer: "))
-        if opcao == 1:
-            nome = input("Digite o nome do treino que você deseja adicionar: ")
-            loc = input('Digite a localização do treino: ')
-            data = input('Digite a data do treino: ')
-            distancia = input("Digite a distância percorrida no treino: ")
-            clima = input("Digite o clima do treino: ")
-            tempo = input("Digite o tempo do treino (em minutos): ")
-            adicionar_treino(nome, loc, data, distancia, clima, tempo)
-        elif opcao == 2:
-            vizualizar()
-        elif opcao == 3:
-            update()
-        elif opcao == 4:
-            deletar()
-    elif escolha == 2:
-        print("---menu de tempo de treinos---")
-        print("1- filtrar treinos")
-        filtrar_opcao = int(input("Escolha de acordo com o menu o que você deseja fazer: "))
-        if filtrar_opcao == 1:
-            tempo_min = float(input("Tempo mínimo (em horas) para o treino: "))
-            tempo_max = float(input("Tempo máximo (em horas) para o treino: "))
-            distancia_min = float(input("Distância mínima (em km): "))
-            distancia_max = float(input("Distância máxima (em km): "))
-            filtrar_treinos(tempo_min, tempo_max, distancia_min, distancia_max)
-    elif escolha == 3:
-        print("---menu de metas/desafios/sugestão de treinos aleatórios---")
-        print("1- adicionar metas")
-        print("2- registrar desafios")
-        print("3- sugestões de treino aleatório")
-        decisao = int(input("De acordo com o menu o que você deseja fazer: "))
-        if decisao == 1:
-            metas_usuario = metas()
-            print("\nMetas definidas com sucesso!")
-        elif decisao == 2:
-            pass
-        elif decisao == 3:
-            pass
 def sugestao_treino():
     arquivo = "treinos.txt"
     usuario = str(input("Digite o nome do usuário para sugerir treinos: "))
@@ -292,6 +237,64 @@ treinos = {
 
 
     escolher(treinos)
+
+while True: 
+    print("""
+    ---menu principal---
+     1- gerenciamento de treinos
+     2- gerenciar tempo de treinos
+     3- metas, desafios e sugestões de treinos aleatórios
+     4- sair""")
+    escolha = int(input("Bem vindo ao RunTrack, escolha de acordo com o menu o que você deseja fazer: "))
+    if escolha == 4:
+        break
+    elif escolha == 1:
+        print("""
+        ---menu de gerenciamento---
+            1- adicionar treino
+            2- visualizar treino
+            3- atualizar treino
+            4- excluir treino""")
+        opcao = int(input("Escolha de acordo com o menu o que você deseja fazer: "))
+        if opcao == 1:
+            nome = input("Digite o nome do treino que você deseja adicionar: ")
+            loc = input('Digite a localização do treino: ')
+            data = input('Digite a data do treino: ')
+            distancia = input("Digite a distância percorrida no treino: ")
+            clima = input("Digite o clima do treino: ")
+            tempo = input("Digite o tempo do treino (em minutos): ")
+            adicionar_treino(nome, loc, data, distancia, clima, tempo)
+        elif opcao == 2:
+            vizualizar()
+        elif opcao == 3:
+            update()
+        elif opcao == 4:
+            deletar()
+    elif escolha == 2:
+        print("---menu de tempo de treinos---")
+        print("1- filtrar treinos")
+        filtrar_opcao = int(input("Escolha de acordo com o menu o que você deseja fazer: "))
+        if filtrar_opcao == 1:
+            tempo_min = float(input("Tempo mínimo (em horas) para o treino: "))
+            tempo_max = float(input("Tempo máximo (em horas) para o treino: "))
+            distancia_min = float(input("Distância mínima (em km): "))
+            distancia_max = float(input("Distância máxima (em km): "))
+            filtrar_treinos(tempo_min, tempo_max, distancia_min, distancia_max)
+    elif escolha == 3:
+        print("---menu de metas/desafios/sugestão de treinos aleatórios---")
+        print("1- adicionar metas")
+        print("2- registrar desafios")
+        print("3- sugestões de treino aleatório")
+        decisao = int(input("De acordo com o menu o que você deseja fazer: "))
+        if decisao == 1:
+            metas_usuario = metas()
+            print("\nMetas definidas com sucesso!")
+        elif decisao == 2:
+            pass
+        elif decisao == 3:
+            pass
+    elif escolha==4:
+       escolher(treinos)
 
 
 
