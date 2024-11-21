@@ -1,22 +1,4 @@
-try:
-    with open('arquivo_treinos.txt', 'r', encoding='utf8') as file:
-        treinos = file.readlines()
-except FileNotFoundError:
-    
-    with open('arquivo_treinos.txt', 'w', encoding='utf8') as file:
-        pass  
-except Exception as e:
-    print(f"Ocorreu um erro ao ler o arquivo: {e}")
 
-def adicionar_treino(nome, loc, data, distancia, clima):
-    try:
-        nome = str(input('Informe o nome do arquivo sem .txt: '))
-        with open(f'{nome}.txt', 'w', encoding='utf8') as file:
-            treino = f"Nome: {nome} \nLocalizacão: {loc} \nData: {data} \nDistância: {distancia} \nClima: {clima}\n"
-            file.write(treino) 
-        print("Treino adicionado com sucesso!")
-    except Exception as e:
-        print(f"Ocorreu um erro ao adicionar o treino: {e}")
 
     def vizualizar():
     try:
