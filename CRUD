@@ -271,6 +271,7 @@ treinos = {
     "3": "Corrida intensa por um período de tempo e depois caminhar.",
     "4": "Corrida de 15 km em um ritmo moderado."
 }
+<<<<<<< HEAD
     while True:
         print('''Escolha o tipo de treino:
 1.⁠ ⁠Intervalado
