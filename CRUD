@@ -51,23 +51,7 @@ treinos = {
     "4": "Corrida de 15 km em um ritmo moderado."
 }
 
-def escolher(treinos):
-    while True:
-        print('''Escolha o tipo de treino:
-1.⁠ ⁠Intervalado
-2.⁠ ⁠Resistência
-3.⁠ ⁠Velocidade
-4.⁠ ⁠Longa Distância
-0.⁠ ⁠Sair''')
-        
-        opcao = input("Digite o número do treino desejado: ")
-        
-        if opcao in treinos:
-            print(treinos[opcao])
-        elif opcao == "0":
-            print("Saindo do programa.")
-            break
-        else:
+
             print("Opção inválida. Tente novamente.")
 
 
