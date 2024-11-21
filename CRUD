@@ -7,6 +7,7 @@ except FileNotFoundError:
         pass  
 except Exception as e:
     print(f"Ocorreu um erro ao ler o arquivo: {e}")
+
 def adicionar_treino(nome, loc, data, distancia, clima):
     try:
         nome = str(input('Informe o nome do arquivo sem .txt: '))
@@ -14,6 +15,9 @@ def adicionar_treino(nome, loc, data, distancia, clima):
             treino = f"Nome: {nome} \nLocalizacão: {loc} \nData: {data} \nDistância: {distancia} \nClima: {clima}\n"
             file.write(treino) 
         print("Treino adicionado com sucesso!")
+    except Exception as e:
+        print(f"Ocorreu um erro ao adicionar o treino: {e}")
+
     
 
 
