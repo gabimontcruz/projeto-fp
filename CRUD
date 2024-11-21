@@ -126,10 +126,12 @@ def metas():
         'frequencia': frequencia_meta
     }
 
-    print("\nSuas metas foram definidas da seguinte forma:")
-    print(f"Distância mensal: {metas_usuario['distancia']} km")
-    print(f"Tempo semanal: {metas_usuario['tempo']} horas")
-    print(f"Frequência semanal de treinos: {metas_usuario['frequencia']} treinos")
+    print("""
+    Suas metas foram definidas da seguinte forma:
+    Distância mensal:{metas_usuario['distancia']}km
+    Tempo semanal:{metas_usuario['tempo']}horas
+    Frequência semanal de treinos:{metas_usuario['frequencia']} treinos
+        """)
 
     try:
         with open('metas.txt', 'a', encoding='utf8') as file:
