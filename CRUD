@@ -157,11 +157,12 @@ while True:
     if escolha == 4:
         break
     elif escolha == 1:
-        print("---menu de gerenciamento---")
-        print("1- adicionar treino")
-        print("2- visualizar treino")
-        print("3- atualizar treino")
-        print("4- excluir treino")
+        print("""
+        ---menu de gerenciamento---
+            1- adicionar treino
+            2- visualizar treino
+            3- atualizar treino
+            4- excluir treino""")
         opcao = int(input("Escolha de acordo com o menu o que você deseja fazer: "))
         if opcao == 1:
             nome = input("Digite o nome do treino que você deseja adicionar: ")
