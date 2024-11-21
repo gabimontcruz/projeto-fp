@@ -18,7 +18,21 @@ def adicionar_treino(nome, loc, data, distancia, clima):
     except Exception as e:
         print(f"Ocorreu um erro ao adicionar o treino: {e}")
 
+    def vizualizar():
+    try:
+        
+        treino=input("Digite o nome do treino que você deseja vizualizar: ")
+        arquivo_treinos = treino + ".txt"
+        with open(arquivo_treinos, 'r', encoding='utf8', errors='ignore') as file:
+            treinos = file.readlines()
+            if treinos:  
+                print("--- Treinos Registrados ---")
+                for treino in treinos:
+                    print(treino.strip())  
+            else:
+                print("Nenhum treino registrado no arquivo.")
     
+
 
 
 
