@@ -7,13 +7,14 @@ def update():
         with open(f"{arquivo}.txt", "w", encoding="utf8") as file:
             file.close()
             edit = str(input("Digite o nome do treino que deseja editar: "))
-            print("---menu de atualização---")
-            print("1-nome")
-            print("2-datas")
-            print("3-localização")
-            print("4-distância")
-            print("5-clima") 
-            print("6-tempo")
+            print("""
+            ---menu de atualização---")
+                1-nome
+                2-datas
+                3-localização
+                4-distância
+                5-clima
+                6-tempo""")
             atualizacao=int(input("Digite de acordo com o menu o que você deseja atualizar: "))
             if atualizacao==1:
                 novonome = str(input("Digite o nome: "))
